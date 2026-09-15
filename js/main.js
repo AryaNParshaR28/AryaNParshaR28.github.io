@@ -71,11 +71,122 @@
     });
   }
 
+  function initPlatformSlider() {
+    var slider = document.querySelector("[data-platform-slider]");
+    if (!slider) return;
+
+    var track = slider.querySelector(".platform-track");
+    var viewport = slider.querySelector(".platform-slider-viewport");
+    if (!track || !viewport) return;
+
+    track.innerHTML = track.innerHTML + track.innerHTML;
+
+    var offset = 0;
+    var paused = false;
+    var speed = 0.45;
+    var halfWidth = 0;
+
+    function measure() {
+      halfWidth = track.scrollWidth / 2;
+    }
+
+    function apply() {
+      if (halfWidth > 0) {
+        offset = ((offset % halfWidth) + halfWidth) % halfWidth;
+      }
+      track.style.transform = "translate3d(" + -offset + "px, 0, 0)";
+    }
+
+    function tick() {
+      if (!paused) {
+        offset += speed;
+        apply();
+      }
+      window.requestAnimationFrame(tick);
+    }
+
+    measure();
+    window.addEventListener("resize", measure);
+    window.addEventListener("load", measure);
+
+    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!reduceMotion) {
+      window.requestAnimationFrame(tick);
+    }
+
+    slider.addEventListener("mouseenter", function () { paused = true; });
+    slider.addEventListener("mouseleave", function () { paused = false; });
+  }
+
+  function initHeroFloatMotion() {
+    var field = document.querySelector(".hero-float");
+    var hero = document.querySelector(".hero");
+    if (!field || !hero) return;
+
+    var icons = Array.prototype.slice.call(field.querySelectorAll(".float-icon"));
+    if (!icons.length) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    var targetX = 0;
+    var targetY = 0;
+    var currentX = 0;
+    var currentY = 0;
+    var active = false;
+
+    icons.forEach(function (icon, i) {
+      if (!icon.style.getPropertyValue("--depth")) {
+        icon.style.setProperty("--depth", String(0.7 + (i % 5) * 0.12));
+      }
+    });
+
+    function onMove(e) {
+      var rect = hero.getBoundingClientRect();
+      var nx = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+      var ny = ((e.clientY - rect.top) / rect.height) * 2 - 1;
+      targetX = Math.max(-1, Math.min(1, nx));
+      targetY = Math.max(-1, Math.min(1, ny));
+      active = true;
+    }
+
+    function onLeave() {
+      targetX = 0;
+      targetY = 0;
+      active = false;
+    }
+
+    function tick() {
+      currentX += (targetX - currentX) * 0.08;
+      currentY += (targetY - currentY) * 0.08;
+
+      field.style.setProperty("--tilt-x", (-currentY * 5).toFixed(2) + "deg");
+      field.style.setProperty("--tilt-y", (currentX * 7).toFixed(2) + "deg");
+
+      icons.forEach(function (icon) {
+        var depth = parseFloat(icon.style.getPropertyValue("--depth")) || 1;
+        var px = currentX * 22 * depth;
+        var py = currentY * 16 * depth;
+        icon.style.setProperty("--px", px.toFixed(1) + "px");
+        icon.style.setProperty("--py", py.toFixed(1) + "px");
+        icon.style.transform =
+          "translate3d(" + px.toFixed(1) + "px, " + py.toFixed(1) + "px, 0)";
+      });
+
+      window.requestAnimationFrame(tick);
+    }
+
+    hero.addEventListener("pointermove", onMove);
+    hero.addEventListener("pointerleave", onLeave);
+    window.requestAnimationFrame(tick);
+  }
+
   function initPage() {
     initNav();
     initHeaderScroll();
     observeReveals();
     initTiltCards();
+    initPlatformSlider();
+    initHeroFloatMotion();
     document.body.classList.add("is-ready");
   }
 

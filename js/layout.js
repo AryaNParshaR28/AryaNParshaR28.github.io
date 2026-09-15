@@ -2,9 +2,14 @@
   var partials = window.__PARTIALS || {};
   var headerMount = document.getElementById("site-header");
   var footerMount = document.getElementById("site-footer");
+  var ctaMount = document.getElementById("site-cta");
 
   if (headerMount && partials.header) {
     headerMount.outerHTML = partials.header.trim();
+  }
+
+  if (ctaMount && partials.cta) {
+    ctaMount.outerHTML = partials.cta.trim();
   }
 
   if (footerMount && partials.footer) {
