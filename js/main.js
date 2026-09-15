@@ -202,7 +202,7 @@
     var paginationEl = document.getElementById("project-pagination");
     if (!listEl || !paginationEl || !window.PORTFOLIO_PROJECTS) return;
 
-    var PER_PAGE = 5;
+    var PER_PAGE = 10;
     var projects = window.PORTFOLIO_PROJECTS;
     var totalPages = Math.max(1, Math.ceil(projects.length / PER_PAGE));
     var currentPage = 1;

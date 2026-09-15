@@ -51,5 +51,33 @@ window.PORTFOLIO_PROJECTS = [
       { label: "NeedsHub", url: "http://needshub.com/" },
       { label: "GhanaDeal", url: "https://ghanadeal.com/" }
     ]
+  },
+  {
+    title: "Workpermit.com",
+    tech: "Drupal 11 · Drupal 7 Migration · OpenAI · Views · Custom Modules",
+    description:
+      "Immigration and visa assistance platform migrated from Drupal 7 to Drupal 11 with complete content migration, custom modules, Drupal Views, homepage redevelopment, and an OpenAI-powered AI chatbot for visa guidance.",
+    links: [{ label: "Visit site", url: "https://workpermit.com/" }]
+  },
+  {
+    title: "USA Workpermit",
+    tech: "WordPress · Static Landing Page · Responsive Design",
+    description:
+      "Single-page WordPress website providing U.S. work permit and visa information through a fast, responsive, SEO-friendly static blog layout.",
+    links: [{ label: "Visit site", url: "https://usa.workpermit.com/" }]
+  },
+  {
+    title: "UK Workpermit",
+    tech: "WordPress · Static Landing Page · Responsive Design",
+    description:
+      "Single-page WordPress website delivering UK work permit and immigration information with a clean, responsive, and optimized static design.",
+    links: [{ label: "Visit site", url: "https://uk.workpermit.com/" }]
+  },
+  {
+    title: "Lost in Australia",
+    tech: "Drupal · Drupal Commerce · Taxonomies · Payment Integration",
+    description:
+      "Australian tour booking platform built with Drupal, featuring Drupal Commerce, tour package management, payment processing, taxonomy-driven destinations, and complete booking administration.",
+    links: [{ label: "Visit site", url: "http://lostinaustralia.org/" }]
   }
 ];
