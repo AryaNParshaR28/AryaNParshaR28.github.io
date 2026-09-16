@@ -15,8 +15,8 @@
   --chrome-bg: #0f172a;
   --max: 1120px;
   --nav-h: 4.25rem;
-  --font-display: "Outfit", "Segoe UI", sans-serif;
-  --font-body: "Manrope", "Segoe UI", sans-serif;
+  --font-display: var(--font-outfit), "Segoe UI", sans-serif;
+  --font-body: var(--font-manrope), "Segoe UI", sans-serif;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
