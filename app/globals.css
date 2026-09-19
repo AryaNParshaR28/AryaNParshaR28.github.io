@@ -369,15 +369,36 @@ ul {
   animation: rise 0.9s var(--ease) both;
 }
 
+.hero-identity {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.9rem, 2.5vw, 1.35rem);
+  margin: 0 0 1.15rem;
+  animation: rise 0.9s var(--ease) 0.08s both;
+}
+
+.hero-portrait {
+  flex-shrink: 0;
+  width: clamp(4.75rem, 11vw, 7rem);
+  height: clamp(4.75rem, 11vw, 7rem);
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 18%;
+  border: 3px solid #fff;
+  box-shadow:
+    0 0 0 1px rgba(2, 132, 199, 0.22),
+    0 14px 32px rgba(15, 23, 42, 0.14);
+  background: linear-gradient(160deg, #e0f2fe, #fff);
+}
+
 .brand-mark {
   font-family: var(--font-display);
-  font-size: clamp(3.8rem, 10vw, 6.5rem);
+  font-size: clamp(3.4rem, 9vw, 6.25rem);
   font-weight: 700;
   letter-spacing: -0.04em;
   line-height: 1.05;
-  margin: 0 0 1.1rem;
+  margin: 0;
   max-width: 10ch;
-  animation: rise 0.9s var(--ease) 0.08s both;
   overflow: visible;
 }
 
@@ -1704,6 +1725,7 @@ ul {
   .hero-float,
   .float-icon,
   .float-icon-orb,
+  .hero-identity,
   .brand-mark,
   .hero-lead,
   .hero-kicker,

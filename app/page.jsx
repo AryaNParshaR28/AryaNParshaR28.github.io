@@ -37,9 +37,18 @@ export default function HomePage() {
         <HeroFloat />
         <div className="container">
           <p className="hero-kicker">Web Expert | WordPress, Laravel &amp; Drupal Expert</p>
-          <h1 className="brand-mark">
-            Aryan<em>.</em>
-          </h1>
+          <div className="hero-identity">
+            <img
+              className="hero-portrait"
+              src="/images/profile-pic.webp"
+              alt="Aryan"
+              width={112}
+              height={112}
+            />
+            <h1 className="brand-mark">
+              Aryan<em>.</em>
+            </h1>
+          </div>
           <p className="hero-lead">
             I design and develop reliable websites and web applications with WordPress, Laravel,
             Drupal, and Shopify — plus Node.js, Next.js, Core PHP, static sites, and server deployment.
